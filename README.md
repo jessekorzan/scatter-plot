@@ -1,5 +1,5 @@
 # scatter-plot
-## Simple CSS scatter plot chart
+## Responsive CSS scatter plot chart
 
 DEMO: https://jessekorzan.github.io/scatter-plot/
 
