@@ -45,45 +45,59 @@ section {
     margin: $spacer * 3 0;
     .pt {
         position: absolute;
-        transform: translateX(-3px) translateY(-3px);
         width: 6px;
         height: 6px;
         border-radius: 100%;
         display: block;
-        background: rgba($orange, 0.75);
-        background: linear-gradient(to bottom, lighten($orange, 35%), lighten($orange, 45%));
         text-indent: 18px;
         font-size: 11px;
         text-transform: uppercase;
         line-height: 18px;
         white-space: nowrap;
         box-shadow: 0px 0px 32px 20px rgba($orange, 0.1);
+        background: linear-gradient(to bottom, lighten($orange, 35%), lighten($orange, 45%));
         &:before {
             content: "";
             position: absolute;
-            top: 0;
+            top: 0px;
             left: 0;
             height: 100%;
             width: 100%;
             border-radius: 100%;
-            box-shadow: 0px 0px 4px 1px rgba($white, 0.8);
+            box-shadow: 0px 0px 3px 1px rgba($white, 0.8);
         }
         &:after {
             content: "";
             position: absolute;
-            top:0;
+            top: 3px;
             left:0;
             height: 144px;
             width: 100%;
-            
+            transform-origin: center top;
+            transform: rotate(45deg);
             background: linear-gradient(to bottom, rgba($orange, 0.15), transparent);
         }
         &.Multi {
+            box-shadow: 0px 0px 32px 20px rgba($lime, 0.1);
             background: linear-gradient(to bottom, lighten($lime, 15%), lighten($lime, 25%));
             &:after {
                 background: linear-gradient(to bottom, rgba($lime, 0.15), transparent);
             }
         }
+        opacity: 0;
+        transform: translateX(-150px) translateY(150px);
+        
+        
+        @for $i from 1 through 100 {
+            &:nth-of-type(#{$i}) {
+                animation-delay: #{($i + 5) * 60}ms;
+                animation-name: intro;
+                animation-timing-function: ease-in;
+                animation-fill-mode: forwards;
+                animation-duration: 260ms;
+            }
+        }
+        
     }
     span {
         position: absolute;
@@ -122,5 +136,16 @@ section {
         transform: rotate(-90deg);
         text-transform: uppercase;
          
+    }
+}
+
+@keyframes intro {
+    0% {
+        opacity: 0;
+        transform: translateX(-150px) translateY(150px) scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px) translateY(0px) scale(1);
     }
 }
