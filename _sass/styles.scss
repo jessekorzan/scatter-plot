@@ -1,0 +1,126 @@
+// vars
+$spacer : 24px;
+
+
+$white : #fff;
+$black : #4B5C64; //#595D5F;
+$orange : #F35935;
+$lime : cyan;
+
+// defaults
+body {
+    background: darken($black, 25%);
+    color: $black;
+    font-family: monospace;
+    font-weight: 400;
+    font-size: 1em;   
+    min-height: 100vh;
+}
+
+
+section {
+    position: relative;
+    > div {
+        width: 100%;
+        
+    }
+}
+.layout-scoreboard {
+    section {
+        padding: $spacer 12% $spacer * 3;
+        > div {
+            width: 100%;
+        
+        }
+    }
+}
+
+
+.ui-two-x-two {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    border-left: 3px solid rgba($black, 0.5);
+    border-bottom: 3px solid rgba($black, 0.5);
+    margin: $spacer * 3 0;
+    .pt {
+        position: absolute;
+        transform: translateX(-3px) translateY(-3px);
+        width: 6px;
+        height: 6px;
+        border-radius: 100%;
+        display: block;
+        background: rgba($orange, 0.75);
+        background: linear-gradient(to bottom, lighten($orange, 35%), lighten($orange, 45%));
+        text-indent: 18px;
+        font-size: 11px;
+        text-transform: uppercase;
+        line-height: 18px;
+        white-space: nowrap;
+        box-shadow: 0px 0px 32px 20px rgba($orange, 0.1);
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: 100%;
+            box-shadow: 0px 0px 4px 1px rgba($white, 0.8);
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            top:0;
+            left:0;
+            height: 144px;
+            width: 100%;
+            
+            background: linear-gradient(to bottom, rgba($orange, 0.15), transparent);
+        }
+        &.Multi {
+            background: linear-gradient(to bottom, lighten($lime, 15%), lighten($lime, 25%));
+            &:after {
+                background: linear-gradient(to bottom, rgba($lime, 0.15), transparent);
+            }
+        }
+    }
+    span {
+        position: absolute;
+        height: 100%;
+        width: 1px;
+        border-left: 1px dashed rgba($black, 0.4);
+    
+        @for $i from 1 through 10 {
+            &:nth-of-type(#{$i}) {
+                left: calc(10% * #{$i});
+                &:after {
+                    content: "#{$i}0";
+                    position: absolute;
+                    bottom: 5px;
+                    left: -60px;
+                    width: 50px;
+                    text-align: right;
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+    &:after {
+        content: "Accuracy";
+        position: absolute;
+        right: 0%;
+        bottom: -$spacer;
+        text-transform: uppercase;
+         
+    }
+    &:before {
+        content: "Speed";
+        position: absolute;
+        left: -40px;
+        top: 16px;
+        transform: rotate(-90deg);
+        text-transform: uppercase;
+         
+    }
+}
