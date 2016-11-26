@@ -1,5 +1,7 @@
 # scatter-plot
 Simple CSS scatter plot chart
+
+DEMO: https://jessekorzan.github.io/scatter-plot/
 ---
 See some of my other repos for examples using data pulled from Google Sheet.
 
